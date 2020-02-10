@@ -1,6 +1,43 @@
-version: '3'
+version: "3"
 services:
-  app:
+  db:
+    image: postgres:11.6-alpine
+    environment:
+      POSTGRES_DB: cxr_dev
+      POSTGRES_USER: cxrdev
+      POSTGRES_PASSWORD: cxrdev
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 30s
+      retries: 3
+    networks:
+      - backend
+    restart: on-failure
+    volumes:
+      - ./.db:/var/lib/postgresql/data
+
+  ingest:
+    depends_on:
+      - db
     build: .
     ports:
       - "5000:5000"
+    networks:
+      - backend
+      - frontend
+  server:
+    depends_on:
+      - db
+    build: .
+    ports:
+      - "5000:5000"
+    networks:
+      - backend
+      - frontend
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
