@@ -28,6 +28,13 @@ services:
     networks:
       - backend
       - frontend
+    environment:
+      - DEBUG=true
+      - PG_HOST=db
+      - PG_USER=cxrdev
+      - PG_PASSWORD=cxrdev
+      - PG_DB=cxr_dev
+      - PG_PORT=5432
 
   server:
     depends_on:
