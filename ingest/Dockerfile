@@ -14,8 +14,8 @@ FROM base
 
 COPY --from=builder /install /usr/local
 COPY src /app/src
-COPY entry.sh /app/entry.sh
+COPY docker-entry.sh /app/docker-entry.sh
 
 WORKDIR /app
 
-CMD ["./entry.sh"]
+CMD ["./docker-entry.sh"]

@@ -1,4 +1,4 @@
-version: "3"
+version: "3.3"
 services:
   db:
     image: postgres:11.6-alpine
@@ -20,18 +20,23 @@ services:
   ingest:
     depends_on:
       - db
-    build: .
+    build:
+      context: ./ingest
+      dockerfile: Dockerfile
     ports:
-      - "5000:5000"
+      - "5001:80"
     networks:
       - backend
       - frontend
+
   server:
     depends_on:
       - db
-    build: .
+    build:
+      context: ./server
+      dockerfile: Dockerfile
     ports:
-      - "5000:5000"
+      - "5002:80"
     networks:
       - backend
       - frontend
