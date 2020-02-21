@@ -15,7 +15,7 @@ services:
       - backend
     restart: on-failure
     volumes:
-      - ./.db:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
 
   ingest:
     depends_on:
@@ -54,3 +54,6 @@ networks:
     driver: bridge
   backend:
     driver: bridge
+
+volumes:
+  postgres_data:
