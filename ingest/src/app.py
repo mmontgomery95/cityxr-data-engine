@@ -15,7 +15,6 @@ PG_URL = f"postgresql://{PG_USER}:{PG_PASSWORD}@{PG_HOST}:{PG_PORT}/{PG_DB}"
 
 print(f"Connecting to {PG_URL}...")
 
-
 try:
     conn = psycopg2.connect(PG_URL)
     c = conn.cursor()
