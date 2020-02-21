@@ -1,3 +1,5 @@
+from flask import Flask
+
 import psycopg2
 from environs import Env
 
@@ -10,6 +12,8 @@ PG_USER = env("PG_USER")
 PG_PASSWORD = env("PG_PASSWORD")
 PG_DB = env("PG_DB")
 PG_PORT = env.int("PG_PORT")
+
+LISTEN_PORT = env.int("LISTEN_PORT")
 
 PG_URL = f"postgresql://{PG_USER}:{PG_PASSWORD}@{PG_HOST}:{PG_PORT}/{PG_DB}"
 
@@ -26,3 +30,15 @@ try:
 except Exception as e:
     print("I am unable to connect to the database:")
     print(e)
+
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def hello_world():
+    return "Hello, World!"
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=LISTEN_PORT)
