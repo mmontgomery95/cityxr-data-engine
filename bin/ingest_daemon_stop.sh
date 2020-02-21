@@ -3,3 +3,4 @@
 set -eou pipefail
 
 docker-compose stop ingest
+
