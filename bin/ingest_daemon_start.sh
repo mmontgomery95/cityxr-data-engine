@@ -2,4 +2,4 @@
 
 set -eou pipefail
 
-docker-compose up -d --build ingest
+docker-compose up --detach --build ingest
