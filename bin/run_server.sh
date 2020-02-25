@@ -3,3 +3,4 @@
 set -eou pipefail
 
 docker-compose up --build server
+
