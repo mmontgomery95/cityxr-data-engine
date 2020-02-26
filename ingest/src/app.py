@@ -6,6 +6,7 @@ import psycopg2
 import importlib.util
 from environs import Env
 
+
 logging.basicConfig(level=logging.DEBUG)
 
 env = Env()
