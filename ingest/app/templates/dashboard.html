@@ -1,0 +1,13 @@
+<html>
+  <head> </head>
+  <body>
+    <h1>Ingest Dashboard</h1>
+    <ul>
+      {% for pid, pinstance in plugins.items() %}
+      <li>
+        {{ pid }} -- {{pinstance.state}} -- {{pinstance.started_at.isoformat()}}
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
