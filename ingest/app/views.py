@@ -11,4 +11,4 @@ def root():
 @app.route("/dashboard")
 def dashboard():
     plugins = PluginManager().get_plugins()
-    return render_template("dashboard.html", plugins=plugins)
+    return render_template("dashboard.html.j2", plugins=plugins)
