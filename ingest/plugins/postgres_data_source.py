@@ -15,8 +15,8 @@ from plugins.data_source import DataSource
 
 
 class PostgresDataSource(DataSource):
-    def __init__(self, id):
-        super().__init__(id)
+    def __init__(self, runtime_id, name):
+        super().__init__(runtime_id, name)
         print("Postgres data source created")
 
     def migrate():

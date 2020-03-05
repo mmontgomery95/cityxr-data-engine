@@ -4,6 +4,8 @@ import importlib.util
 
 import logging
 
+from uuid import uuid4
+
 logging.basicConfig(level=logging.DEBUG)
 
 
@@ -38,4 +40,7 @@ class PluginManager(object):
             )
             plugin_module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(plugin_module)
-            self._plugins[module_name] = plugin_module.Plugin(id=module_name)
+            plugin_uuid = uuid4()
+            self._plugins[plugin_uuid] = plugin_module.Plugin(
+                runtime_id=plugin_uuid, name=module_name
+            )

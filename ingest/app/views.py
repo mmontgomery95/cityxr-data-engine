@@ -8,6 +8,12 @@ def root():
     return redirect("/dashboard", 302)
 
 
+@app.route("/sources/<source_id>")
+def source_details(source_id):
+    plugin = PluginManager().get_plugins()[source_id]
+    return render_template("source.html.j2", plugin=plugin)
+
+
 @app.route("/dashboard")
 def dashboard():
     plugins = PluginManager().get_plugins()

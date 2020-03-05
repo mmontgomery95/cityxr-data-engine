@@ -9,7 +9,9 @@
   <ul>
       {% for pid, pinstance in plugins.items() %}
       <li>
-        {{ pid }} -- {{pinstance.state}} -- {{pinstance.started_at.isoformat()}}
+        <a href="/sources/{{pid}}">
+        {{pinstance.name}} -- {{ pid }} -- {{pinstance.state}} -- {{pinstance.started_at.isoformat()}}
+        </a>
       </li>
       {% endfor %}
   </ul>

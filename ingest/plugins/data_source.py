@@ -23,10 +23,12 @@ class DataSource(metaclass=ABCMeta):
 
     state = None
     name = None
+    runtime_id = None
     started_at = None
 
-    def __init__(self, id):
-        self.id = id
+    def __init__(self, runtime_id, name):
+        self.runtime_id = runtime_id
+        self.name = name
         self.state = DSState.starting
         self.started_at = datetime.now(timezone.utc)
         print("DataSource created")
