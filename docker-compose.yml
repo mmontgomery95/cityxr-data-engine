@@ -23,6 +23,7 @@ services:
     build:
       context: ./ingest
       dockerfile: Dockerfile
+    volumes: ["./ingest:/app"]
     ports:
       - "5001:80"
     networks:
