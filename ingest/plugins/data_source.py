@@ -33,6 +33,18 @@ class DataSource(metaclass=ABCMeta):
         self.started_at = datetime.now(timezone.utc)
         print("DataSource created")
 
+    def initialize():
+        """
+        Override this to do plugin-specific setup tasks.
+        """
+        pass
+
+    def update(update_time):
+        """
+        Override this to tell the plugin to check if its time to update yet.
+        """
+        pass
+
     @abstractmethod
     def migrate():
         pass
